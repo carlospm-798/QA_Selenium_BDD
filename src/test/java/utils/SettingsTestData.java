@@ -15,17 +15,12 @@ public class SettingsTestData {
     public final String RESOURCES_PATH = "src/test/resources/";
     public final String TEST_DATA_PATH = RESOURCES_PATH + "testdata/";
     private final String ENVIRONMENT_PATH = RESOURCES_PATH + "environment/";
-    private final String DATA_TABLE_FILE_PATH = TEST_DATA_PATH + "dataTableData.json";
     private final ISettingsFile ENVIRONMENT_CONFIG = new JsonSettingsFile("env.json");
     private final Gson GSON = new Gson();
 
     public EnvData getEnvData() {
         String envConfigPath = "%s%s.json".formatted(ENVIRONMENT_PATH, getCurrentEnvironment());
         return deserializeJson(envConfigPath, EnvData.class);
-    }
-
-    public DataTableData getDataTableData() {
-        return deserializeJson(DATA_TABLE_FILE_PATH, DataTableData.class);
     }
 
     private String getCurrentEnvironment() {

@@ -1,23 +1,23 @@
 package pages;
 
 import aquality.selenium.browser.AqualityServices;
-import aquality.selenium.elements.interfaces.ILink;
-import aquality.selenium.forms.Form;
-import constants.LocatorConstants;
+import aquality.selenium.elements.interfaces.IButton;
+import aquality.selenium.elements.interfaces.IElementFactory;
 import org.openqa.selenium.By;
+import aquality.selenium.forms.Form;
 
 public class MainPage extends Form {
 
+    private final IElementFactory elementFactory = AqualityServices.getElementFactory();
+    private final By POLICY_BUTTON = By.xpath("//div[@class='banner-button policy-accept']");
+    private final IButton clickPolicyButton = elementFactory.getButton(POLICY_BUTTON, "Policy");
+
     public MainPage() {
-        super(By.xpath(String.format(LocatorConstants.PRECISE_TEXT_XPATH, "Welcome to the-internet")), "Main Page");
+        super(By.xpath("//*[@class='accuweather']"), "Main Page");
     }
 
-    private ILink getNavigationLink(String navigation) {
-        return AqualityServices.getElementFactory().getLink(By.xpath(String.format(LocatorConstants.PRECISE_TEXT_XPATH,
-                navigation)), navigation);
+    public void ClickPolicyButton() {
+        clickPolicyButton.click();
     }
 
-    public void clickNavigationLink(String navigation) {
-        getNavigationLink(navigation).click();
-    }
 }
