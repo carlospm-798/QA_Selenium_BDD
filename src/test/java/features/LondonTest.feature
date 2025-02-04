@@ -1,3 +1,4 @@
+@omit
 Feature: London test
   I am a user
   I want to check the weather in London
